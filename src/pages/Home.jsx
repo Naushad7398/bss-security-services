@@ -2,10 +2,10 @@ import React from 'react'
 import Hero from '../components/home/Hero'
 import AboutPreview from '../components/home/AboutPreview'
 import ServicesPreview from '../components/home/ServicesPreview'
-import Stats from '../components/home/Stats'
-import WhyChooseUs from '../components/home/WhyChooseUs'
-import Industries from '../components/home/Industries'
-import Testimonials from '../components/home/Testimonials'
+import Facts from '../components/home/Facts'
+import CareersPreview from '../components/home/CareersPreview'
+import Technology from '../components/home/Technology'
+import NewsPreview from '../components/home/NewsPreview'
 import CTA from '../components/home/CTA'
 
 export const Home = () => {
@@ -14,13 +14,14 @@ export const Home = () => {
       <Hero />
       <AboutPreview />
       <ServicesPreview />
-      <Stats />
-      <WhyChooseUs />
-      <Industries />
-      <Testimonials />
+      <Facts />
+      <CareersPreview />
+      <Technology />
+      <NewsPreview />
       <CTA />
     </div>
   )
 }
 
 export default Home
+

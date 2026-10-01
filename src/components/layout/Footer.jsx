@@ -1,4 +1,4 @@
-﻿import React from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import { Shield, Phone, Mail, MapPin, CheckCircle, ShieldCheck } from 'lucide-react'
 import Container from '../common/Container'
