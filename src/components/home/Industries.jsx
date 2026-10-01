@@ -1,4 +1,4 @@
-import React from 'react'
+﻿import React from 'react'
 import Container from '../common/Container'
 import SectionTitle from '../common/SectionTitle'
 import Button from '../common/Button'
@@ -7,28 +7,36 @@ import { Building2, ArrowRight } from 'lucide-react'
 
 export const Industries = () => {
   return (
-    <section className="py-16 lg:py-24 bg-slate-900/40 border-b border-slate-800">
+    <section className="py-16 lg:py-24 bg-white border-b border-slate-200">
       <Container>
         <SectionTitle
-          subtitle="Sectors We Protect"
+          subtitle="Sectors We Safeguard"
           title="Industries We Serve"
-          description="Customized security solutions designed to address the unique risk profile of each industry sector."
+          description="Customized security blueprints tailored to match the unique compliance and risk profile of each industry sector."
         />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {industries.map((ind) => (
             <div
               key={ind.id}
-              className="p-6 rounded-lg bg-slate-950/80 border border-slate-800 hover:border-amber-500/40 transition-colors"
+              className="p-7 rounded-xl bg-white border border-slate-200 hover:border-[#c23235] hover:shadow-lg transition-all duration-200 group flex flex-col justify-between"
             >
-              <div className="w-10 h-10 rounded bg-amber-500/10 text-amber-400 flex items-center justify-center mb-4">
-                <Building2 className="w-5 h-5" />
+              <div>
+                <div className="w-12 h-12 rounded-lg bg-red-50 border border-red-100 text-[#c23235] flex items-center justify-center mb-5 group-hover:bg-[#c23235] group-hover:text-white transition-colors duration-200">
+                  <Building2 className="w-6 h-6" />
+                </div>
+                <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-[#c23235] transition-colors">
+                  {ind.name}
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-6">
+                  {ind.description}
+                </p>
               </div>
-              <h3 className="text-base font-bold text-white mb-2">{ind.name}</h3>
-              <p className="text-xs text-slate-400 leading-relaxed mb-4">{ind.description}</p>
-              <Button to="/industries" variant="ghost" size="sm" className="px-0 text-amber-400 hover:text-amber-300">
-                Learn More <ArrowRight className="w-3.5 h-3.5 ml-1" />
-              </Button>
+              <div>
+                <Button to="/industries" variant="ghost" size="sm" className="px-0 text-[#c23235] hover:text-[#9e1d23] font-bold">
+                  Sector Solutions <ArrowRight className="w-3.5 h-3.5 ml-1" />
+                </Button>
+              </div>
             </div>
           ))}
         </div>

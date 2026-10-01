@@ -1,4 +1,4 @@
-import React from 'react'
+﻿import React from 'react'
 
 export const SectionTitle = ({
   subtitle,
@@ -12,17 +12,17 @@ export const SectionTitle = ({
   return (
     <div className={`max-w-3xl mb-12 ${alignmentClass} ${className}`}>
       {subtitle && (
-        <span className="inline-block text-xs font-bold tracking-widest uppercase text-amber-400 mb-3 px-3 py-1 rounded-full bg-amber-400/10 border border-amber-400/20">
+        <span className="inline-block text-xs font-bold tracking-widest uppercase text-[#c23235] mb-3 px-3.5 py-1 rounded-full bg-red-50 border border-red-200">
           {subtitle}
         </span>
       )}
       {title && (
-        <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mt-1 mb-4">
+        <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mt-1 mb-4">
           {title}
         </h2>
       )}
       {description && (
-        <p className="text-base sm:text-lg text-slate-400 leading-relaxed">
+        <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
           {description}
         </p>
       )}

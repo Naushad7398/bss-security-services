@@ -1,4 +1,4 @@
-import React from 'react'
+﻿import React from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 
@@ -17,13 +17,17 @@ export const Button = ({
 
   const variants = {
     primary:
-      'bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500 hover:from-amber-400 hover:to-amber-300 text-slate-950 font-semibold shadow-lg shadow-amber-500/25 border border-amber-300/40 hover:shadow-amber-500/40',
+      'bg-[#c23235] hover:bg-[#a81c22] text-white font-semibold shadow-md shadow-red-900/15 border border-[#b01e21] hover:shadow-lg hover:shadow-red-900/25',
     secondary:
-      'bg-slate-900/90 hover:bg-slate-800 text-slate-200 border border-slate-700/80 hover:border-slate-600 shadow-sm',
+      'bg-slate-900 hover:bg-slate-800 text-white border border-slate-800 shadow-sm',
     outline:
-      'border border-amber-500/80 text-amber-400 hover:bg-amber-500/10 hover:border-amber-400 hover:text-amber-300',
+      'border-2 border-[#c23235] text-[#c23235] hover:bg-[#c23235] hover:text-white font-semibold',
+    outlineWhite:
+      'border-2 border-white text-white hover:bg-white/15 font-bold',
+    white:
+      'bg-white hover:bg-slate-100 text-[#c23235] hover:text-[#9e1d23] font-bold shadow-md shadow-black/15 border border-white',
     ghost:
-      'text-slate-300 hover:text-white hover:bg-slate-800/60',
+      'text-slate-700 hover:text-[#c23235] hover:bg-red-50/80',
   }
 
   const sizes = {

@@ -1,4 +1,4 @@
-import React from 'react'
+﻿import React from 'react'
 import Container from '../common/Container'
 import SectionTitle from '../common/SectionTitle'
 import { FileCheck, ShieldAlert, Cpu, HeartHandshake } from 'lucide-react'
@@ -7,33 +7,33 @@ export const WhyChooseUs = () => {
   const reasons = [
     {
       title: 'Statutory & Regulatory Compliance',
-      description: 'Adherence to standard labor laws, statutory requirements, and security guidelines.',
+      description: 'Strict adherence to PSARA guidelines, labor compliance, ESIC, PF, and state statutory provisions.',
       icon: FileCheck,
     },
     {
       title: 'Trained & Disciplined Personnel',
-      description: 'Structured training modules covering emergency preparedness, fire safety, and on-site vigilance.',
+      description: 'Standardized defense-inspired drills, fire safety certifications, and specialized incident mitigation protocols.',
       icon: ShieldAlert,
     },
     {
-      title: 'Technology-Integrated Vigilance',
-      description: 'Deployment of digital check-ins, scheduled patrolling, and systematic incident reporting.',
+      title: 'ManTech Integrated Vigilance',
+      description: 'Smart digital check-in systems, QR-code patrolling, and real-time electronic command logs.',
       icon: Cpu,
     },
     {
       title: 'Dedicated Client Support Officers',
-      description: 'Designated point of contact for operational coordination, site reviews, and escalation handling.',
+      description: 'Designated operations managers for daily coordination, surprise site audits, and seamless escalations.',
       icon: HeartHandshake,
     },
   ]
 
   return (
-    <section className="py-16 lg:py-24 bg-slate-950 border-b border-slate-800">
+    <section className="py-16 lg:py-24 bg-slate-50 border-b border-slate-200">
       <Container>
         <SectionTitle
-          subtitle="Why Choose Us"
-          title="The BSS Security Advantage"
-          description="We combine disciplined personnel with modern vigilance practices to support round-the-clock safety and peace of mind."
+          subtitle="The BSS Security Edge"
+          title="Why Leading Enterprises Trust BSS Suraksha"
+          description="Combining disciplined manpower with institutional governance to provide round-the-clock safety and operational resilience."
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -42,13 +42,17 @@ export const WhyChooseUs = () => {
             return (
               <div
                 key={idx}
-                className="p-6 rounded-lg bg-slate-900/40 border border-slate-800 text-left hover:border-amber-500/30 transition-colors"
+                className="p-6 rounded-xl bg-white border border-slate-200 text-left hover:border-[#c23235] hover:shadow-lg transition-all duration-200 group"
               >
-                <div className="w-10 h-10 rounded bg-amber-500/10 text-amber-400 flex items-center justify-center mb-4">
-                  <Icon className="w-5 h-5" />
+                <div className="w-12 h-12 rounded-lg bg-red-50 border border-red-100 text-[#c23235] flex items-center justify-center mb-4 group-hover:bg-[#c23235] group-hover:text-white transition-colors duration-200">
+                  <Icon className="w-6 h-6" />
                 </div>
-                <h3 className="text-base font-bold text-white mb-2">{item.title}</h3>
-                <p className="text-xs text-slate-400 leading-relaxed">{item.description}</p>
+                <h3 className="text-base font-bold text-slate-900 mb-2 group-hover:text-[#c23235] transition-colors">
+                  {item.title}
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                  {item.description}
+                </p>
               </div>
             )
           })}

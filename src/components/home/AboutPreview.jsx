@@ -1,51 +1,57 @@
-import React from 'react'
+﻿import React from 'react'
 import Container from '../common/Container'
 import SectionTitle from '../common/SectionTitle'
 import Button from '../common/Button'
-import { Award, CheckCircle2 } from 'lucide-react'
+import { Award, CheckCircle2, ShieldCheck } from 'lucide-react'
 
 export const AboutPreview = () => {
   return (
-    <section className="py-16 lg:py-24 bg-slate-900/60 border-b border-slate-800">
+    <section className="py-16 lg:py-24 bg-slate-50 border-b border-slate-200">
       <Container>
         <SectionTitle
-          subtitle="About BSS"
+          subtitle="About BSS Suraksha"
           title="Setting Benchmarks in Professional Vigilance"
-          description="BSS Suraksha Services Pvt. Ltd. delivers professional security personnel, surveillance management, and disciplined protective services tailored to client requirements."
+          description="BSS Suraksha Services Pvt. Ltd. delivers professionally trained security personnel, electronic surveillance management, and disciplined protective services across India."
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mt-8">
-          <div className="space-y-4 text-slate-300 text-sm leading-relaxed">
-            <p>
-              We operate with structured standard operating procedures, regular background verifications, ongoing training curriculums, and round-the-clock coordination to safeguard our clients across diverse environments.
+          <div className="space-y-4 text-slate-700 text-sm leading-relaxed">
+            <p className="text-base text-slate-800 font-medium">
+              Modeled after India's premier security enterprises, we combine structured standard operating procedures, regular background verifications, and round-the-clock coordination.
             </p>
-            <ul className="space-y-2 text-slate-200">
-              <li className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-amber-400" />
-                <span>Statutory & Regulatory Compliance</span>
+            <ul className="space-y-2.5 text-slate-700">
+              <li className="flex items-center gap-2.5">
+                <CheckCircle2 className="w-5 h-5 text-[#c23235] shrink-0" />
+                <span className="font-medium">100% Statutory & PSARA Regulatory Compliance</span>
               </li>
-              <li className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-amber-400" />
-                <span>Experienced Operational Management</span>
+              <li className="flex items-center gap-2.5">
+                <CheckCircle2 className="w-5 h-5 text-[#c23235] shrink-0" />
+                <span className="font-medium">Ex-Defense & Experienced Operational Management</span>
               </li>
-              <li className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-amber-400" />
-                <span>24/7 Security Coordination & Rapid Response</span>
+              <li className="flex items-center gap-2.5">
+                <CheckCircle2 className="w-5 h-5 text-[#c23235] shrink-0" />
+                <span className="font-medium">24/7 Central Control Room Coordination & Emergency Response</span>
               </li>
             </ul>
-            <div className="pt-2">
+            <div className="pt-3">
               <Button to="/about" variant="outline" size="md">
-                Learn More About Us
+                Learn More About Our Company
               </Button>
             </div>
           </div>
 
-          <div className="bg-slate-950 p-8 rounded-lg border border-slate-800 text-center">
-            <Award className="w-12 h-12 text-amber-400 mx-auto mb-4" />
-            <h3 className="text-xl font-bold text-white mb-2">Committed to Safety</h3>
-            <p className="text-slate-400 text-xs">
-              Personnel undergo thorough background screening and structured on-site training to ensure reliable service delivery.
+          <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-md text-center">
+            <div className="w-16 h-16 rounded-2xl bg-red-50 text-[#c23235] flex items-center justify-center mx-auto mb-4 border border-red-100">
+              <Award className="w-9 h-9" />
+            </div>
+            <h3 className="text-xl font-black text-slate-900 mb-2">Committed to Enterprise Safety</h3>
+            <p className="text-slate-600 text-xs sm:text-sm leading-relaxed max-w-sm mx-auto">
+              Every personnel undergoes comprehensive multi-tier background screening, physical conditioning, and structured fire & emergency training modules.
             </p>
+            <div className="mt-5 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold">
+              <ShieldCheck className="w-4 h-4 text-[#c23235]" />
+              <span>Certified Guarding Protocols</span>
+            </div>
           </div>
         </div>
       </Container>
