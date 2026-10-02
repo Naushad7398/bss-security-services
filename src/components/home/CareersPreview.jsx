@@ -1,4 +1,4 @@
-import React from 'react'
+﻿import React from 'react'
 import { motion } from 'framer-motion'
 import { ArrowRight, Users, GraduationCap, ShieldCheck, HeartHandshake } from 'lucide-react'
 import Container from '../common/Container'
@@ -26,16 +26,13 @@ export const CareersPreview = () => {
   ]
 
   return (
-    <section className="py-20 lg:py-28 bg-[#050811] border-b border-slate-800/80 relative overflow-hidden">
-      {/* Background Subtle Accent Glow */}
-      <div className="absolute top-1/2 right-0 -translate-y-1/2 w-96 h-96 bg-amber-500/5 rounded-full blur-[140px] pointer-events-none" />
-
+    <section className="py-20 lg:py-28 bg-white border-b border-slate-200 relative overflow-hidden">
       <Container className="relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          {/* Left Column: Large Image Panel */}
+          {/* Left Column: Image Panel */}
           <div className="lg:col-span-6 order-2 lg:order-1 relative">
-            <div className="relative rounded-2xl overflow-hidden border border-slate-800 bg-slate-950 p-2 shadow-2xl shadow-black/80">
-              <div className="relative rounded-xl overflow-hidden aspect-[4/3] sm:aspect-[16/11]">
+            <div className="relative rounded-3xl overflow-hidden border border-slate-200 bg-white p-2.5 shadow-xl shadow-slate-200/60">
+              <div className="relative rounded-2xl overflow-hidden aspect-[4/3] sm:aspect-[16/11]">
                 <ImagePlaceholder
                   src={siteImages.careers}
                   alt="Career Opportunities at BSS Suraksha"
@@ -47,17 +44,17 @@ export const CareersPreview = () => {
               </div>
 
               {/* Floating Badge */}
-              <div className="absolute -bottom-1 -left-1 sm:bottom-6 sm:left-6 bg-slate-900/95 border border-amber-500/30 backdrop-blur-md rounded-xl p-4 sm:p-5 shadow-2xl max-w-[260px] hidden sm:block">
+              <div className="absolute -bottom-1 -left-1 sm:bottom-6 sm:left-6 bg-white/95 border border-amber-200 backdrop-blur-md rounded-2xl p-4 sm:p-5 shadow-xl max-w-[260px] hidden sm:block">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-amber-500/10 border border-amber-500/20 text-amber-400 flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 rounded-xl bg-amber-50 border border-amber-200 text-amber-700 flex items-center justify-center shrink-0">
                     <Users className="w-5 h-5" />
                   </div>
                   <div>
-                    <span className="text-[11px] font-bold text-white tracking-wide block uppercase">
+                    <span className="text-[11px] font-black text-slate-900 tracking-wide block uppercase">
                       Dedicated Workforce
                     </span>
-                    <span className="text-[10px] text-slate-400 leading-tight block mt-0.5">
-                      Opportunities across security & operational roles
+                    <span className="text-[10px] text-slate-500 font-medium leading-tight block mt-0.5">
+                      Opportunities across guarding & operational roles
                     </span>
                   </div>
                 </div>
@@ -67,18 +64,18 @@ export const CareersPreview = () => {
 
           {/* Right Column: Careers Content */}
           <div className="lg:col-span-6 order-1 lg:order-2">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900 border border-amber-500/20 text-amber-400 text-xs font-bold tracking-widest uppercase mb-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-50 border border-amber-200 text-amber-900 text-xs font-bold tracking-widest uppercase mb-4">
               <span>CAREERS AT BSS</span>
             </div>
 
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-[1.15] mb-6">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight leading-[1.15] mb-6">
               Career{' '}
-              <span className="bg-gradient-to-r from-amber-300 via-amber-400 to-amber-500 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-amber-600 via-amber-500 to-amber-700 bg-clip-text text-transparent">
                 Opportunities
               </span>
             </h2>
 
-            <p className="text-slate-300 text-base sm:text-lg leading-relaxed mb-8">
+            <p className="text-slate-600 text-base sm:text-lg leading-relaxed mb-8">
               Explore opportunities to contribute to professional security operations and client-focused service delivery. We value discipline, integrity and commitment to client safety.
             </p>
 
@@ -88,16 +85,16 @@ export const CareersPreview = () => {
                 return (
                   <div
                     key={idx}
-                    className="p-4 rounded-xl bg-slate-900/60 border border-slate-800/90 flex items-start gap-4 hover:border-slate-700/80 transition-colors"
+                    className="p-4.5 rounded-2xl bg-slate-50 border border-slate-200 flex items-start gap-4 hover:border-amber-500/80 hover:bg-white hover:shadow-md transition-all duration-200"
                   >
-                    <div className="w-10 h-10 rounded-lg bg-amber-500/10 border border-amber-500/20 text-amber-400 flex items-center justify-center shrink-0 mt-0.5">
+                    <div className="w-10 h-10 rounded-xl bg-amber-50 border border-amber-200 text-amber-700 flex items-center justify-center shrink-0 mt-0.5">
                       <Icon className="w-5 h-5" />
                     </div>
                     <div>
-                      <h4 className="text-sm font-bold text-white tracking-wide">
+                      <h4 className="text-sm font-bold text-slate-900 tracking-wide">
                         {item.title}
                       </h4>
-                      <p className="text-xs text-slate-400 leading-relaxed mt-0.5">
+                      <p className="text-xs text-slate-600 leading-relaxed mt-0.5">
                         {item.desc}
                       </p>
                     </div>
@@ -111,7 +108,7 @@ export const CareersPreview = () => {
                 to="/careers"
                 variant="primary"
                 size="lg"
-                className="group uppercase text-xs tracking-wider font-bold py-4 px-8 shadow-lg shadow-amber-500/20"
+                className="group uppercase text-xs tracking-wider font-extrabold py-4 px-8 shadow-lg shadow-amber-500/20"
               >
                 <span>Join Our Team</span>
                 <ArrowRight className="w-4 h-4 ml-1.5 transition-transform duration-200 group-hover:translate-x-1" />

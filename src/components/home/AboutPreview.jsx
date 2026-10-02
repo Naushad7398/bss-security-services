@@ -16,21 +16,21 @@ export const AboutPreview = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mt-8">
           <div className="space-y-4 text-slate-700 text-sm leading-relaxed">
-            <p className="text-base text-slate-800 font-medium">
-              Modeled after India's premier security enterprises, we combine structured standard operating procedures, regular background verifications, and round-the-clock coordination.
+            <p className="text-base text-slate-900 font-semibold">
+              Founded on the values of विश्वास (Trust), समर्पण (Dedication), and सुरक्षा (Protection), we integrate structured SOPs, strict defense vetting, and round-the-clock coordination.
             </p>
             <ul className="space-y-2.5 text-slate-700">
               <li className="flex items-center gap-2.5">
-                <CheckCircle2 className="w-5 h-5 text-[#c23235] shrink-0" />
+                <CheckCircle2 className="w-5 h-5 text-amber-600 shrink-0" />
                 <span className="font-medium">100% Statutory & PSARA Regulatory Compliance</span>
               </li>
               <li className="flex items-center gap-2.5">
-                <CheckCircle2 className="w-5 h-5 text-[#c23235] shrink-0" />
-                <span className="font-medium">Ex-Defense & Experienced Operational Management</span>
+                <CheckCircle2 className="w-5 h-5 text-amber-600 shrink-0" />
+                <span className="font-medium">Ex-Defense & Experienced Security Management</span>
               </li>
               <li className="flex items-center gap-2.5">
-                <CheckCircle2 className="w-5 h-5 text-[#c23235] shrink-0" />
-                <span className="font-medium">24/7 Central Control Room Coordination & Emergency Response</span>
+                <CheckCircle2 className="w-5 h-5 text-amber-600 shrink-0" />
+                <span className="font-medium">24/7 Central Control Room Coordination & Rapid Emergency Dispatch</span>
               </li>
             </ul>
             <div className="pt-3">
@@ -40,16 +40,16 @@ export const AboutPreview = () => {
             </div>
           </div>
 
-          <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-md text-center">
-            <div className="w-16 h-16 rounded-2xl bg-red-50 text-[#c23235] flex items-center justify-center mx-auto mb-4 border border-red-100">
+          <div className="bg-white p-8 rounded-3xl border border-amber-200/90 shadow-md text-center">
+            <div className="w-16 h-16 rounded-2xl bg-amber-50 text-amber-700 flex items-center justify-center mx-auto mb-4 border border-amber-200">
               <Award className="w-9 h-9" />
             </div>
             <h3 className="text-xl font-black text-slate-900 mb-2">Committed to Enterprise Safety</h3>
             <p className="text-slate-600 text-xs sm:text-sm leading-relaxed max-w-sm mx-auto">
-              Every personnel undergoes comprehensive multi-tier background screening, physical conditioning, and structured fire & emergency training modules.
+              Every personnel undergoes rigorous physical drills, background clearance verification, and continuous emergency response certifications.
             </p>
-            <div className="mt-5 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold">
-              <ShieldCheck className="w-4 h-4 text-[#c23235]" />
+            <div className="mt-5 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-50 text-amber-900 text-xs font-bold border border-amber-200">
+              <ShieldCheck className="w-4 h-4 text-amber-600" />
               <span>Certified Guarding Protocols</span>
             </div>
           </div>

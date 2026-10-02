@@ -17,17 +17,17 @@ export const Button = ({
 
   const variants = {
     primary:
-      'bg-[#c23235] hover:bg-[#a81c22] text-white font-semibold shadow-md shadow-red-900/15 border border-[#b01e21] hover:shadow-lg hover:shadow-red-900/25',
+      'bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500 hover:from-amber-400 hover:to-amber-300 text-slate-950 font-bold shadow-md shadow-amber-500/25 border border-amber-300/60 hover:shadow-lg hover:shadow-amber-500/35',
     secondary:
-      'bg-slate-900 hover:bg-slate-800 text-white border border-slate-800 shadow-sm',
+      'bg-[#0a192f] hover:bg-[#0f2744] text-white border border-slate-700/70 shadow-sm font-semibold',
     outline:
-      'border-2 border-[#c23235] text-[#c23235] hover:bg-[#c23235] hover:text-white font-semibold',
-    outlineWhite:
-      'border-2 border-white text-white hover:bg-white/15 font-bold',
-    white:
-      'bg-white hover:bg-slate-100 text-[#c23235] hover:text-[#9e1d23] font-bold shadow-md shadow-black/15 border border-white',
+      'border-2 border-amber-600 text-amber-700 hover:bg-amber-600 hover:text-white font-bold',
+    outlineGold:
+      'border-2 border-amber-400/80 text-amber-300 hover:bg-amber-400/15 font-bold',
     ghost:
-      'text-slate-700 hover:text-[#c23235] hover:bg-red-50/80',
+      'text-slate-700 hover:text-amber-700 hover:bg-amber-50 font-semibold',
+    white:
+      'bg-white hover:bg-slate-50 text-slate-900 font-extrabold shadow-md shadow-black/10 border border-slate-200',
   }
 
   const sizes = {

@@ -12,12 +12,12 @@ export const SectionTitle = ({
   return (
     <div className={`max-w-3xl mb-12 ${alignmentClass} ${className}`}>
       {subtitle && (
-        <span className="inline-block text-xs font-bold tracking-widest uppercase text-[#c23235] mb-3 px-3.5 py-1 rounded-full bg-red-50 border border-red-200">
+        <span className="inline-block text-xs font-bold tracking-widest uppercase text-amber-800 mb-3 px-3.5 py-1 rounded-full bg-amber-50 border border-amber-200 shadow-xs">
           {subtitle}
         </span>
       )}
       {title && (
-        <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mt-1 mb-4">
+        <h2 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight mt-1 mb-4">
           {title}
         </h2>
       )}

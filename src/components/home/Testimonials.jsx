@@ -21,7 +21,7 @@ export const Testimonials = () => {
               className="p-7 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between"
             >
               <div>
-                <Quote className="w-8 h-8 text-[#c23235]/40 mb-3" />
+                <Quote className="w-8 h-8 text-amber-600/30 mb-3" />
                 <p className="text-slate-700 text-sm italic mb-6 leading-relaxed">
                   "{item.feedback}"
                 </p>
@@ -30,7 +30,7 @@ export const Testimonials = () => {
               <div className="pt-4 border-t border-slate-100">
                 <div className="flex gap-1 text-amber-500 mb-2">
                   {[...Array(item.rating)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-amber-400" />
+                    <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
                   ))}
                 </div>
                 <div className="font-bold text-slate-900 text-sm">{item.clientName}</div>

@@ -7,7 +7,7 @@ import AppRoutes from './routes/AppRoutes'
 function App() {
   return (
     <Router>
-      <div className="flex flex-col min-h-screen bg-white text-slate-900 selection:bg-[#c23235] selection:text-white font-sans">
+      <div className="flex flex-col min-h-screen bg-white text-slate-900 selection:bg-amber-500 selection:text-slate-950 font-sans">
         <Navbar />
         <main className="flex-1">
           <AppRoutes />

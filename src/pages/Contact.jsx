@@ -35,34 +35,34 @@ export const Contact = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mt-12">
           <div className="space-y-6">
-            <div className="p-8 rounded-2xl bg-white border border-slate-200 shadow-sm">
-              <h3 className="text-xl font-bold text-slate-900 mb-5 border-l-4 border-[#c23235] pl-3">
-                Corporate Office
+            <div className="p-8 rounded-3xl bg-white border border-slate-200 shadow-sm">
+              <h3 className="text-xl font-black text-slate-900 mb-5 border-l-4 border-amber-500 pl-3">
+                Corporate Headquarters
               </h3>
               <div className="space-y-4 text-sm text-slate-700">
                 <div className="flex items-start gap-3.5">
-                  <MapPin className="w-5 h-5 text-[#c23235] shrink-0 mt-0.5" />
+                  <MapPin className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
                   <span className="leading-relaxed">
                     Headquarters & Central Operations Desk, India
                   </span>
                 </div>
                 <div className="flex items-center gap-3.5">
-                  <Phone className="w-5 h-5 text-[#c23235] shrink-0" />
-                  <span className="font-medium">Toll-Free Helpline: +91 1800-890-BSS</span>
+                  <Phone className="w-5 h-5 text-amber-600 shrink-0" />
+                  <span className="font-semibold">Toll-Free Helpline: +91 1800-890-BSS</span>
                 </div>
                 <div className="flex items-center gap-3.5">
-                  <Mail className="w-5 h-5 text-[#c23235] shrink-0" />
-                  <span className="font-medium">Official Email: contact@bsssuraksha.com</span>
+                  <Mail className="w-5 h-5 text-amber-600 shrink-0" />
+                  <span className="font-semibold">Official Email: contact@bsssuraksha.com</span>
                 </div>
                 <div className="flex items-center gap-3.5">
-                  <Clock className="w-5 h-5 text-[#c23235] shrink-0" />
-                  <span>24/7 Rapid Response & Incident Command Desk</span>
+                  <Clock className="w-5 h-5 text-amber-600 shrink-0" />
+                  <span>24/7 Rapid Incident Command Desk</span>
                 </div>
               </div>
             </div>
 
-            <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-center gap-4">
-              <div className="w-12 h-12 rounded-xl bg-red-50 text-[#c23235] flex items-center justify-center shrink-0 border border-red-100">
+            <div className="p-6 rounded-3xl bg-white border border-slate-200 shadow-sm flex items-center gap-4">
+              <div className="w-12 h-12 rounded-xl bg-amber-50 text-amber-700 flex items-center justify-center shrink-0 border border-amber-200">
                 <ShieldCheck className="w-7 h-7" />
               </div>
               <div>
@@ -74,8 +74,8 @@ export const Contact = () => {
             </div>
           </div>
 
-          <div className="p-8 sm:p-10 rounded-2xl bg-white border border-slate-200 shadow-md">
-            <h3 className="text-2xl font-bold text-slate-900 mb-6">Request a Security Consultation</h3>
+          <div className="p-8 sm:p-10 rounded-3xl bg-white border border-slate-200 shadow-md">
+            <h3 className="text-2xl font-black text-slate-900 mb-6">Request a Security Consultation</h3>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <label className="block text-xs font-bold text-slate-700 uppercase mb-1.5">
@@ -87,7 +87,7 @@ export const Contact = () => {
                   value={formData.name}
                   onChange={handleChange}
                   placeholder="Enter your name"
-                  className="w-full px-4 py-2.5 rounded-lg bg-slate-50 border border-slate-300 text-slate-900 text-sm focus:border-[#c23235] focus:outline-none focus:ring-1 focus:ring-[#c23235] transition-colors"
+                  className="w-full px-4 py-2.5 rounded-lg bg-slate-50 border border-slate-300 text-slate-900 text-sm focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500/20 transition-colors"
                   required
                 />
               </div>
@@ -103,7 +103,7 @@ export const Contact = () => {
                     value={formData.phone}
                     onChange={handleChange}
                     placeholder="Enter phone number"
-                    className="w-full px-4 py-2.5 rounded-lg bg-slate-50 border border-slate-300 text-slate-900 text-sm focus:border-[#c23235] focus:outline-none focus:ring-1 focus:ring-[#c23235] transition-colors"
+                    className="w-full px-4 py-2.5 rounded-lg bg-slate-50 border border-slate-300 text-slate-900 text-sm focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500/20 transition-colors"
                     required
                   />
                 </div>
@@ -117,7 +117,7 @@ export const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     placeholder="Enter email address"
-                    className="w-full px-4 py-2.5 rounded-lg bg-slate-50 border border-slate-300 text-slate-900 text-sm focus:border-[#c23235] focus:outline-none focus:ring-1 focus:ring-[#c23235] transition-colors"
+                    className="w-full px-4 py-2.5 rounded-lg bg-slate-50 border border-slate-300 text-slate-900 text-sm focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500/20 transition-colors"
                     required
                   />
                 </div>
@@ -131,7 +131,7 @@ export const Contact = () => {
                   name="serviceRequired"
                   value={formData.serviceRequired}
                   onChange={handleChange}
-                  className="w-full px-4 py-2.5 rounded-lg bg-slate-50 border border-slate-300 text-slate-900 text-sm focus:border-[#c23235] focus:outline-none focus:ring-1 focus:ring-[#c23235] transition-colors"
+                  className="w-full px-4 py-2.5 rounded-lg bg-slate-50 border border-slate-300 text-slate-900 text-sm focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500/20 transition-colors"
                 >
                   <option value="Manned Guarding">Physical Security & Manned Guarding</option>
                   <option value="Executive Protection">Executive & VIP Protection</option>
@@ -152,12 +152,12 @@ export const Contact = () => {
                   value={formData.message}
                   onChange={handleChange}
                   placeholder="Provide brief details about your premises, location, or security needs..."
-                  className="w-full px-4 py-2.5 rounded-lg bg-slate-50 border border-slate-300 text-slate-900 text-sm focus:border-[#c23235] focus:outline-none focus:ring-1 focus:ring-[#c23235] transition-colors"
+                  className="w-full px-4 py-2.5 rounded-lg bg-slate-50 border border-slate-300 text-slate-900 text-sm focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500/20 transition-colors"
                 ></textarea>
               </div>
 
               <div className="pt-2">
-                <Button type="submit" variant="primary" className="w-full justify-center py-3 text-sm font-bold uppercase tracking-wider">
+                <Button type="submit" variant="primary" className="w-full justify-center py-3.5 text-sm font-black uppercase tracking-wider">
                   Submit Consultation Request
                 </Button>
               </div>

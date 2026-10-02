@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Shield, Menu, X, ArrowRight, Phone, Mail, ShieldAlert } from 'lucide-react'
+import { Shield, Menu, X, ArrowRight, Phone, Mail } from 'lucide-react'
 import Container from '../common/Container'
 import Button from '../common/Button'
 
@@ -17,7 +17,6 @@ export const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const location = useLocation()
 
-  // Track window scroll to toggle subtle shadow
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20)
@@ -27,7 +26,6 @@ export const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  // Close mobile menu on route change
   useEffect(() => {
     setMobileMenuOpen(false)
   }, [location.pathname])
@@ -43,17 +41,17 @@ export const Navbar = () => {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
-      {/* Top SIS India style utility bar */}
-      <div className="bg-[#0f172a] text-slate-300 text-xs py-1.5 hidden md:block border-b border-slate-800">
+      {/* Top Utility Bar in Imperial Navy */}
+      <div className="bg-[#0a192f] text-slate-300 text-xs py-2 hidden md:block border-b border-slate-800">
         <Container>
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-6">
               <span className="flex items-center gap-1.5 hover:text-white transition-colors">
-                <Phone className="w-3.5 h-3.5 text-[#c23235]" />
+                <Phone className="w-3.5 h-3.5 text-amber-400" />
                 <span className="font-medium">24/7 Helpline: +91 1800-890-BSS</span>
               </span>
               <span className="flex items-center gap-1.5 hover:text-white transition-colors">
-                <Mail className="w-3.5 h-3.5 text-[#c23235]" />
+                <Mail className="w-3.5 h-3.5 text-amber-400" />
                 <span>contact@bsssuraksha.com</span>
               </span>
             </div>
@@ -63,7 +61,7 @@ export const Navbar = () => {
                 24/7 Command & Control Center Active
               </span>
               <span className="text-slate-600">|</span>
-              <span className="text-[11px] uppercase tracking-wider text-slate-400 font-medium">
+              <span className="text-[11px] uppercase tracking-wider text-amber-300 font-semibold">
                 PSARA Certified
               </span>
             </div>
@@ -73,15 +71,15 @@ export const Navbar = () => {
 
       {/* Main Corporate White Navigation */}
       <div
-        className={`bg-white/95 backdrop-blur-md transition-all duration-300 ease-in-out border-b ${
+        className={`bg-white/98 backdrop-blur-md transition-all duration-300 ease-in-out border-b ${
           isScrolled
-            ? 'border-slate-200/90 shadow-md py-3'
-            : 'border-slate-200 py-4'
+            ? 'border-slate-200/90 shadow-md py-2.5'
+            : 'border-slate-200 py-3.5'
         }`}
       >
         <Container>
           <div className="flex items-center justify-between">
-            {/* Brand Logo */}
+            {/* Brand Logo & Name */}
             <Link
               to="/"
               className="flex items-center gap-3.5 group focus:outline-none"
@@ -90,30 +88,30 @@ export const Navbar = () => {
               {bssLogoSrc ? (
                 <img
                   src={bssLogoSrc}
-                  alt="BSS Suraksha Services Logo"
-                  className="h-10 sm:h-11 w-auto object-contain transition-transform duration-200 group-hover:scale-105"
+                  alt="BSS Suraksha Services Crest"
+                  className="h-12 sm:h-14 w-auto object-contain transition-transform duration-200 group-hover:scale-105 filter drop-shadow-sm"
                 />
               ) : (
-                <div className="relative flex items-center justify-center w-10 h-10 sm:w-11 sm:h-11 rounded-lg bg-[#c23235] text-white shadow-md shadow-red-700/20 group-hover:bg-[#a81c22] group-hover:scale-105 transition-all duration-200">
-                  <Shield className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.4]" />
+                <div className="relative flex items-center justify-center w-11 h-11 sm:w-12 sm:h-12 rounded-lg bg-gradient-to-br from-amber-500 to-amber-700 text-slate-950 shadow-md shadow-amber-600/30">
+                  <Shield className="w-6 h-6 stroke-[2.4]" />
                 </div>
               )}
               <div className="flex flex-col">
                 <div className="flex items-center gap-1.5">
-                  <span className="text-xl sm:text-2xl font-black tracking-wider text-slate-900">
+                  <span className="text-xl sm:text-2xl font-black tracking-wider text-slate-950">
                     BSS
                   </span>
-                  <span className="text-xl sm:text-2xl font-bold tracking-wider text-[#c23235]">
+                  <span className="text-xl sm:text-2xl font-black tracking-wider bg-gradient-to-r from-amber-600 via-amber-500 to-amber-700 bg-clip-text text-transparent">
                     SURAKSHA
                   </span>
                 </div>
-                <span className="text-[9px] sm:text-[10px] tracking-[0.2em] font-semibold uppercase text-slate-500">
+                <span className="text-[9px] sm:text-[10px] tracking-[0.2em] font-bold uppercase text-slate-500">
                   Services Pvt. Ltd.
                 </span>
               </div>
             </Link>
 
-            {/* Center/Right Desktop Navigation Links */}
+            {/* Desktop Navigation Links */}
             <nav className="hidden lg:flex items-center gap-8 xl:gap-9" aria-label="Main Navigation">
               {navLinks.map((link) => (
                 <NavLink
@@ -121,10 +119,10 @@ export const Navbar = () => {
                   to={link.path}
                   end={link.path === '/'}
                   className={({ isActive }) =>
-                    `relative text-sm tracking-wide transition-colors duration-200 py-1.5 font-semibold ${
+                    `relative text-sm tracking-wide transition-colors duration-200 py-1.5 font-bold ${
                       isActive
-                        ? 'text-[#c23235]'
-                        : 'text-slate-700 hover:text-[#c23235]'
+                        ? 'text-amber-600'
+                        : 'text-slate-700 hover:text-amber-600'
                     }`
                   }
                 >
@@ -134,7 +132,7 @@ export const Navbar = () => {
                       {isActive && (
                         <motion.div
                           layoutId="activeNavIndicator"
-                          className="absolute bottom-0 left-0 right-0 h-[2.5px] bg-[#c23235] rounded-full"
+                          className="absolute bottom-0 left-0 right-0 h-[2.5px] bg-gradient-to-r from-amber-500 to-amber-600 rounded-full"
                           transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                         />
                       )}
@@ -144,13 +142,13 @@ export const Navbar = () => {
               ))}
             </nav>
 
-            {/* Right Action: Prominent "Get a Quote" Button */}
+            {/* Action Button: Gilded Gold Quote Button */}
             <div className="hidden lg:flex items-center gap-4">
               <Button
                 to="/contact"
                 variant="primary"
                 size="md"
-                className="px-5 py-2.5 text-xs font-bold uppercase tracking-wider"
+                className="px-5 py-2.5 text-xs font-black uppercase tracking-wider"
               >
                 <span>Get a Quote</span>
                 <ArrowRight className="w-3.5 h-3.5 ml-0.5" />
@@ -160,18 +158,18 @@ export const Navbar = () => {
             {/* Mobile Hamburger Button */}
             <button
               type="button"
-              className="lg:hidden p-2 rounded-lg text-slate-700 hover:text-[#c23235] hover:bg-slate-100 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#c23235]/40"
+              className="lg:hidden p-2 rounded-lg text-slate-700 hover:text-amber-600 hover:bg-slate-100 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-amber-500/40"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-expanded={mobileMenuOpen}
               aria-label="Toggle navigation menu"
             >
-              {mobileMenuOpen ? <X className="w-6 h-6 text-[#c23235]" /> : <Menu className="w-6 h-6" />}
+              {mobileMenuOpen ? <X className="w-6 h-6 text-amber-600" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
         </Container>
       </div>
 
-      {/* Mobile Drawer Navigation with Framer Motion */}
+      {/* Mobile Drawer Navigation */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
@@ -191,8 +189,8 @@ export const Navbar = () => {
                     className={({ isActive }) =>
                       `flex items-center justify-between px-4 py-2.5 rounded-lg text-sm transition-all duration-150 ${
                         isActive
-                          ? 'bg-red-50 text-[#c23235] border-l-4 border-[#c23235] font-bold'
-                          : 'text-slate-700 hover:bg-slate-50 hover:text-[#c23235] font-medium'
+                          ? 'bg-amber-50 text-amber-800 border-l-4 border-amber-500 font-bold'
+                          : 'text-slate-700 hover:bg-slate-50 hover:text-amber-600 font-semibold'
                       }`
                     }
                   >
@@ -207,13 +205,13 @@ export const Navbar = () => {
                   to="/contact"
                   variant="primary"
                   size="md"
-                  className="w-full justify-center text-center font-bold tracking-wider uppercase text-xs py-3"
+                  className="w-full justify-center text-center font-black tracking-wider uppercase text-xs py-3"
                 >
                   Get a Free Quote
                 </Button>
 
-                <div className="flex items-center justify-center gap-2 text-xs text-slate-500 py-1">
-                  <Phone className="w-3.5 h-3.5 text-[#c23235]" />
+                <div className="flex items-center justify-center gap-2 text-xs text-slate-600 py-1">
+                  <Phone className="w-3.5 h-3.5 text-amber-600" />
                   <span>24/7 Security Helpline: +91 1800-890-BSS</span>
                 </div>
               </div>

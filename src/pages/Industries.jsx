@@ -19,13 +19,13 @@ export const Industries = () => {
           {industries.map((ind) => (
             <div
               key={ind.id}
-              className="p-8 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between hover:border-[#c23235] hover:shadow-xl transition-all duration-200 group"
+              className="p-8 rounded-3xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between hover:border-amber-500/80 hover:shadow-xl transition-all duration-200 group"
             >
               <div>
-                <div className="w-12 h-12 rounded-xl bg-red-50 border border-red-100 text-[#c23235] flex items-center justify-center mb-5 group-hover:bg-[#c23235] group-hover:text-white transition-colors duration-200">
+                <div className="w-12 h-12 rounded-xl bg-amber-50 border border-amber-200 text-amber-700 flex items-center justify-center mb-5 group-hover:bg-gradient-to-br group-hover:from-amber-500 group-hover:to-amber-600 group-hover:text-slate-950 transition-all duration-200 shadow-xs">
                   <Building2 className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-[#c23235] transition-colors">
+                <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-amber-700 transition-colors">
                   {ind.name}
                 </h3>
                 <p className="text-sm text-slate-600 leading-relaxed mb-6">

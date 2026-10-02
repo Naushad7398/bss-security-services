@@ -42,12 +42,12 @@ export const WhyChooseUs = () => {
             return (
               <div
                 key={idx}
-                className="p-6 rounded-xl bg-white border border-slate-200 text-left hover:border-[#c23235] hover:shadow-lg transition-all duration-200 group"
+                className="p-7 rounded-2xl bg-white border border-slate-200 text-left hover:border-amber-500/80 hover:shadow-lg transition-all duration-200 group"
               >
-                <div className="w-12 h-12 rounded-lg bg-red-50 border border-red-100 text-[#c23235] flex items-center justify-center mb-4 group-hover:bg-[#c23235] group-hover:text-white transition-colors duration-200">
+                <div className="w-12 h-12 rounded-xl bg-amber-50 border border-amber-200 text-amber-700 flex items-center justify-center mb-5 group-hover:bg-gradient-to-br group-hover:from-amber-500 group-hover:to-amber-600 group-hover:text-slate-950 transition-all duration-200 shadow-xs">
                   <Icon className="w-6 h-6" />
                 </div>
-                <h3 className="text-base font-bold text-slate-900 mb-2 group-hover:text-[#c23235] transition-colors">
+                <h3 className="text-base font-bold text-slate-900 mb-2 group-hover:text-amber-700 transition-colors">
                   {item.title}
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">

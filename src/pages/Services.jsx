@@ -39,13 +39,13 @@ export const Services = () => {
             return (
               <div
                 key={service.id}
-                className="p-8 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between hover:border-[#c23235] hover:shadow-xl transition-all duration-200 group"
+                className="p-8 rounded-3xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between hover:border-amber-500/80 hover:shadow-xl transition-all duration-200 group"
               >
                 <div>
-                  <div className="w-12 h-12 rounded-xl bg-red-50 border border-red-100 text-[#c23235] flex items-center justify-center mb-5 group-hover:bg-[#c23235] group-hover:text-white transition-colors duration-200">
+                  <div className="w-12 h-12 rounded-xl bg-amber-50 border border-amber-200 text-amber-700 flex items-center justify-center mb-5 group-hover:bg-gradient-to-br group-hover:from-amber-500 group-hover:to-amber-600 group-hover:text-slate-950 transition-all duration-200 shadow-xs">
                     <IconComponent className="w-6 h-6" />
                   </div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-[#c23235] transition-colors">
+                  <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-amber-700 transition-colors">
                     {service.title}
                   </h3>
                   <p className="text-sm text-slate-600 leading-relaxed mb-6">
@@ -56,7 +56,7 @@ export const Services = () => {
                     <ul className="space-y-2.5 mb-6 text-xs text-slate-700 border-t border-slate-100 pt-4">
                       {service.features.map((feat, idx) => (
                         <li key={idx} className="flex items-center gap-2.5">
-                          <span className="w-1.5 h-1.5 rounded-full bg-[#c23235] shrink-0" />
+                          <span className="w-1.5 h-1.5 rounded-full bg-amber-500 shrink-0" />
                           <span>{feat}</span>
                         </li>
                       ))}
