@@ -79,16 +79,16 @@ export const Footer = () => {
               <div className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
                 <span className="text-slate-400 leading-relaxed">
-                  Headquarters & Central Operations Desk, India
+                  499D, Andheryari Bagh, Surajkund Colony, Gorakhnath, Gorakhpur, Uttar Pradesh - 273015
                 </span>
               </div>
               <div className="flex items-center gap-2.5">
                 <Phone className="w-4 h-4 text-amber-400 shrink-0" />
-                <span>+91 1800-890-BSS (24/7 Helpline)</span>
+                <span>+91 96641 54689 (24/7 Helpline)</span>
               </div>
               <div className="flex items-center gap-2.5">
                 <Mail className="w-4 h-4 text-amber-400 shrink-0" />
-                <span>contact@bsssuraksha.com</span>
+                <span>bsssuraksha@gmail.com</span>
               </div>
             </div>
           </div>

@@ -48,11 +48,11 @@ export const Navbar = () => {
             <div className="flex items-center gap-6">
               <span className="flex items-center gap-1.5 hover:text-white transition-colors">
                 <Phone className="w-3.5 h-3.5 text-amber-400" />
-                <span className="font-medium">24/7 Helpline: +91 1800-890-BSS</span>
+                <span className="font-medium">24/7 Helpline: +91 96641 54689</span>
               </span>
               <span className="flex items-center gap-1.5 hover:text-white transition-colors">
                 <Mail className="w-3.5 h-3.5 text-amber-400" />
-                <span>contact@bsssuraksha.com</span>
+                <span>bsssuraksha@gmail.com</span>
               </span>
             </div>
             <div className="flex items-center gap-4">
@@ -212,7 +212,7 @@ export const Navbar = () => {
 
                 <div className="flex items-center justify-center gap-2 text-xs text-slate-600 py-1">
                   <Phone className="w-3.5 h-3.5 text-amber-600" />
-                  <span>24/7 Security Helpline: +91 1800-890-BSS</span>
+                  <span>24/7 Security Helpline: +91 96641 54689</span>
                 </div>
               </div>
             </Container>

@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react'
+import React, { useState } from 'react'
 import Container from '../components/common/Container'
 import SectionTitle from '../components/common/SectionTitle'
 import Button from '../components/common/Button'
@@ -43,16 +43,16 @@ export const Contact = () => {
                 <div className="flex items-start gap-3.5">
                   <MapPin className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
                   <span className="leading-relaxed">
-                    Headquarters & Central Operations Desk, India
+                    499D, Andheryari Bagh, Surajkund Colony, Gorakhnath, Gorakhpur, Uttar Pradesh - 273015
                   </span>
                 </div>
                 <div className="flex items-center gap-3.5">
                   <Phone className="w-5 h-5 text-amber-600 shrink-0" />
-                  <span className="font-semibold">Toll-Free Helpline: +91 1800-890-BSS</span>
+                  <span className="font-semibold">Toll-Free Helpline: +91 96641 54689</span>
                 </div>
                 <div className="flex items-center gap-3.5">
                   <Mail className="w-5 h-5 text-amber-600 shrink-0" />
-                  <span className="font-semibold">Official Email: contact@bsssuraksha.com</span>
+                  <span className="font-semibold">Official Email: bsssuraksha@gmail.com</span>
                 </div>
                 <div className="flex items-center gap-3.5">
                   <Clock className="w-5 h-5 text-amber-600 shrink-0" />
