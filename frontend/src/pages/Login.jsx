@@ -60,8 +60,16 @@ export const Login = () => {
         password: formData.password,
       })
 
-      // Redirect based strictly on the role returned by the backend
-      if (userProfile?.role === 'ADMIN') {
+      const requestedRoute = location.state?.from
+      const requestedPath = requestedRoute?.pathname
+        ? `${requestedRoute.pathname}${requestedRoute.search || ''}${requestedRoute.hash || ''}`
+        : ''
+      const isAdmin = userProfile?.role === 'ADMIN'
+
+      // Preserve protected destinations when the authenticated role is allowed to use them.
+      if (requestedPath && (isAdmin || !requestedRoute.pathname.startsWith('/admin'))) {
+        navigate(requestedPath, { replace: true })
+      } else if (isAdmin) {
         navigate('/admin', { replace: true })
       } else {
         navigate('/careers', { replace: true })
