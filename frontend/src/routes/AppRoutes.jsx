@@ -5,6 +5,7 @@ import About from '../pages/About'
 import Services from '../pages/Services'
 import Industries from '../pages/Industries'
 import Careers from '../pages/Careers'
+import CareerApplication from '../pages/CareerApplication'
 import Contact from '../pages/Contact'
 import Login from '../pages/Login'
 import Register from '../pages/Register'
@@ -25,6 +26,7 @@ export const AppRoutes = () => {
       <Route path="/services" element={<Services />} />
       <Route path="/industries" element={<Industries />} />
       <Route path="/careers" element={<Careers />} />
+      <Route path="/careers/apply/:jobId" element={<CareerApplication />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
