@@ -12,6 +12,9 @@ frontend/node_modules/
 frontend/dist/
 frontend/dist-ssr/
 frontend/*.local
+frontend/.env
+frontend/.env.*
+!frontend/.env.example
 node_modules/
 dist/
 dist-ssr/
@@ -20,9 +23,9 @@ dist-ssr/
 # Backend
 backend/target/
 backend/.env
-backend/.env.local
+backend/.env.*
+!backend/.env.example
 backend/uploads/
-backend/classpath.txt
 target/
 .env
 .env.local

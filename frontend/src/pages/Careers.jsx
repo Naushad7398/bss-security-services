@@ -1,4 +1,4 @@
-﻿import React from 'react'
+import React from 'react'
 import Container from '../components/common/Container'
 import SectionTitle from '../components/common/SectionTitle'
 import Button from '../components/common/Button'
