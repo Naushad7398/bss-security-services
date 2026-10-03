@@ -14,6 +14,7 @@ import AdminLayout from '../components/admin/AdminLayout'
 import AdminDashboard from '../pages/admin/AdminDashboard'
 import AdminJobs from '../pages/admin/AdminJobs'
 import AdminApplications from '../pages/admin/AdminApplications'
+import AdminContactQueries from '../pages/admin/AdminContactQueries'
 
 export const AppRoutes = () => {
   return (
@@ -47,6 +48,7 @@ export const AppRoutes = () => {
         <Route index element={<AdminDashboard />} />
         <Route path="jobs" element={<AdminJobs />} />
         <Route path="applications" element={<AdminApplications />} />
+        <Route path="contact-queries" element={<AdminContactQueries />} />
       </Route>
 
       <Route path="*" element={<Home />} />

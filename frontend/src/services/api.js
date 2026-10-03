@@ -274,6 +274,30 @@ export const adminApplicationsApi = {
   },
 };
 
+/**
+ * Admin Contact Queries API endpoints (ROLE_ADMIN)
+ */
+export const adminContactQueriesApi = {
+  // GET /api/admin/contact-queries
+  getAllQueries: () =>
+    request('/admin/contact-queries', {
+      method: 'GET',
+    }),
+
+  // GET /api/admin/contact-queries/{id}
+  getQueryById: (id) =>
+    request(`/admin/contact-queries/${id}`, {
+      method: 'GET',
+    }),
+
+  // PATCH /api/admin/contact-queries/{id}/status
+  updateQueryStatus: (id, status) =>
+    request(`/admin/contact-queries/${id}/status`, {
+      method: 'PATCH',
+      body: JSON.stringify({ status }),
+    }),
+};
+
 export default {
   auth: authApi,
   jobs: jobsApi,
@@ -281,6 +305,7 @@ export default {
   applications: applicationsApi,
   adminJobs: adminJobsApi,
   adminApplications: adminApplicationsApi,
+  adminContactQueries: adminContactQueriesApi,
   getAuthToken,
   setAuthToken,
   clearAuthToken,

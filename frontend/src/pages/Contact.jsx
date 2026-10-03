@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import Container from '../components/common/Container'
 import SectionTitle from '../components/common/SectionTitle'
 import Button from '../components/common/Button'
-import { Phone, Mail, MapPin, Clock, ShieldCheck } from 'lucide-react'
+import { Phone, Mail, MapPin, Clock, ShieldCheck, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react'
+import { contactApi } from '../services/api'
 
 export const Contact = () => {
   const [formData, setFormData] = useState({
@@ -12,16 +13,44 @@ export const Contact = () => {
     serviceRequired: 'Manned Guarding',
     message: '',
   })
+  const [submitting, setSubmitting] = useState(false)
+  const [successData, setSuccessData] = useState(null)
+  const [errorMessage, setErrorMessage] = useState('')
 
   const handleChange = (e) => {
     const { name, value } = e.target
     setFormData((prev) => ({ ...prev, [name]: value }))
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log('Submitting contact form data:', formData)
-    alert('Thank you for contacting BSS Security Services. Our operations desk will connect with you shortly.')
+    setSubmitting(true)
+    setErrorMessage('')
+    setSuccessData(null)
+
+    try {
+      const response = await contactApi.submitQuery({
+        name: formData.name.trim(),
+        email: formData.email.trim(),
+        phone: formData.phone.trim(),
+        service: formData.serviceRequired,
+        message: formData.message.trim(),
+      })
+      setSuccessData(response)
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        serviceRequired: 'Manned Guarding',
+        message: '',
+      })
+    } catch (err) {
+      setErrorMessage(
+        err.message || 'Failed to submit consultation request. Please try again or call our 24/7 helpline.'
+      )
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   return (
@@ -34,6 +63,7 @@ export const Contact = () => {
         />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mt-12">
+          {/* Left Column: Headquarters & Assistance */}
           <div className="space-y-6">
             <div className="p-8 rounded-3xl bg-white border border-slate-200 shadow-sm">
               <h3 className="text-xl font-black text-slate-900 mb-5 border-l-4 border-amber-500 pl-3">
@@ -74,12 +104,39 @@ export const Contact = () => {
             </div>
           </div>
 
+          {/* Right Column: Request Form */}
           <div className="p-8 sm:p-10 rounded-3xl bg-white border border-slate-200 shadow-md">
             <h3 className="text-2xl font-black text-slate-900 mb-6">Request a Security Consultation</h3>
+
+            {/* Success notification */}
+            {successData && (
+              <div className="p-5 mb-6 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-900 text-xs leading-relaxed space-y-2">
+                <div className="flex items-center gap-2 font-black text-sm text-emerald-800">
+                  <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
+                  <span>Enquiry Registered Successfully</span>
+                </div>
+                <p>
+                  Thank you, <span className="font-bold">{successData.name}</span>. Your security consultation enquiry{' '}
+                  <span className="font-mono font-bold bg-emerald-100 px-1.5 py-0.5 rounded">
+                    #CQ-{String(successData.id).padStart(3, '0')}
+                  </span>{' '}
+                  has been routed to our operations command desk. A senior security deployment manager will connect with you shortly.
+                </p>
+              </div>
+            )}
+
+            {/* Error notification */}
+            {errorMessage && (
+              <div className="p-4 mb-6 rounded-2xl bg-rose-50 border border-rose-200 text-rose-800 text-xs flex items-center gap-2">
+                <AlertCircle className="w-5 h-5 text-rose-600 shrink-0" />
+                <span>{errorMessage}</span>
+              </div>
+            )}
+
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <label className="block text-xs font-bold text-slate-700 uppercase mb-1.5">
-                  Full Name
+                  Full Name <span className="text-rose-500">*</span>
                 </label>
                 <input
                   type="text"
@@ -95,7 +152,7 @@ export const Contact = () => {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-xs font-bold text-slate-700 uppercase mb-1.5">
-                    Phone Number
+                    Phone Number <span className="text-rose-500">*</span>
                   </label>
                   <input
                     type="tel"
@@ -109,7 +166,7 @@ export const Contact = () => {
                 </div>
                 <div>
                   <label className="block text-xs font-bold text-slate-700 uppercase mb-1.5">
-                    Email Address
+                    Email Address <span className="text-rose-500">*</span>
                   </label>
                   <input
                     type="email"
@@ -133,18 +190,19 @@ export const Contact = () => {
                   onChange={handleChange}
                   className="w-full px-4 py-2.5 rounded-lg bg-slate-50 border border-slate-300 text-slate-900 text-sm focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500/20 transition-colors"
                 >
-                  <option value="Manned Guarding">Physical Security & Manned Guarding</option>
-                  <option value="Executive Protection">Executive & VIP Protection</option>
-                  <option value="Electronic Surveillance">Electronic Surveillance & CCTV</option>
-                  <option value="Event Security">Event Security Management</option>
-                  <option value="Corporate Investigation">Corporate Risk & Security Audit</option>
-                  <option value="Cash Logistics">Cash in Transit & Valuables</option>
+                  <option value="Physical Security & Manned Guarding">Physical Security & Manned Guarding</option>
+                  <option value="Executive & VIP Protection">Executive & VIP Protection</option>
+                  <option value="Electronic Surveillance & CCTV">Electronic Surveillance & CCTV</option>
+                  <option value="Event Security Management">Event Security Management</option>
+                  <option value="Corporate Risk & Security Audit">Corporate Risk & Security Audit</option>
+                  <option value="Cash in Transit & Valuables">Cash in Transit & Valuables</option>
+                  <option value="Other Security Solution">Other Security Solution</option>
                 </select>
               </div>
 
               <div>
                 <label className="block text-xs font-bold text-slate-700 uppercase mb-1.5">
-                  Premises / Requirement Details
+                  Premises / Requirement Details <span className="text-rose-500">*</span>
                 </label>
                 <textarea
                   name="message"
@@ -153,12 +211,19 @@ export const Contact = () => {
                   onChange={handleChange}
                   placeholder="Provide brief details about your premises, location, or security needs..."
                   className="w-full px-4 py-2.5 rounded-lg bg-slate-50 border border-slate-300 text-slate-900 text-sm focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500/20 transition-colors"
+                  required
                 ></textarea>
               </div>
 
               <div className="pt-2">
-                <Button type="submit" variant="primary" className="w-full justify-center py-3.5 text-sm font-black uppercase tracking-wider">
-                  Submit Consultation Request
+                <Button
+                  type="submit"
+                  variant="primary"
+                  disabled={submitting}
+                  className="w-full justify-center py-3.5 text-sm font-black uppercase tracking-wider disabled:opacity-50"
+                >
+                  {submitting && <Loader2 className="w-4 h-4 mr-2 animate-spin" />}
+                  <span>{submitting ? 'Submitting Consultation...' : 'Submit Consultation Request'}</span>
                 </Button>
               </div>
             </form>
