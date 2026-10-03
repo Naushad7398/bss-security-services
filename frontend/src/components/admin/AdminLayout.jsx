@@ -4,6 +4,7 @@ import {
   LayoutDashboard,
   Briefcase,
   FileText,
+  Users,
   MessageSquare,
   LogOut,
   Shield,
@@ -62,6 +63,12 @@ export const AdminLayout = ({ children }) => {
       name: 'Candidate Applications',
       path: '/admin/applications',
       icon: FileText,
+      end: false,
+    },
+    {
+      name: 'Applicants',
+      path: '/admin/applicants',
+      icon: Users,
       end: false,
     },
     {

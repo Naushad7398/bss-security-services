@@ -298,6 +298,32 @@ export const adminContactQueriesApi = {
     }),
 };
 
+/**
+ * Admin Applicants API endpoints (ROLE_ADMIN)
+ */
+export const adminApplicantsApi = {
+  // GET /api/admin/applicants (optional search query)
+  getAllApplicants: (search) => {
+    const query = search ? `?search=${encodeURIComponent(search)}` : '';
+    return request(`/admin/applicants${query}`, {
+      method: 'GET',
+    });
+  },
+
+  // GET /api/admin/applicants/{id}
+  getApplicantById: (id) =>
+    request(`/admin/applicants/${id}`, {
+      method: 'GET',
+    }),
+
+  // PATCH /api/admin/applicants/{id}/status
+  updateApplicantStatus: (id, enabled) =>
+    request(`/admin/applicants/${id}/status`, {
+      method: 'PATCH',
+      body: JSON.stringify({ enabled }),
+    }),
+};
+
 export default {
   auth: authApi,
   jobs: jobsApi,
@@ -306,6 +332,7 @@ export default {
   adminJobs: adminJobsApi,
   adminApplications: adminApplicationsApi,
   adminContactQueries: adminContactQueriesApi,
+  adminApplicants: adminApplicantsApi,
   getAuthToken,
   setAuthToken,
   clearAuthToken,
