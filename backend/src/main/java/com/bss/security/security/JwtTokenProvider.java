@@ -63,13 +63,18 @@ public class JwtTokenProvider {
     }
 
     public Long getUserIdFromJWT(String token) {
-        Claims claims = Jwts.parser()
-                .verifyWith(key)
-                .build()
-                .parseSignedClaims(token)
-                .getPayload();
+        try {
+            Claims claims = Jwts.parser()
+                    .verifyWith(key)
+                    .build()
+                    .parseSignedClaims(token)
+                    .getPayload();
 
-        return Long.parseLong(claims.getSubject());
+            String subject = claims.getSubject();
+            return subject != null ? Long.parseLong(subject) : null;
+        } catch (Exception ex) {
+            return null;
+        }
     }
 
     public String getEmailFromJWT(String token) {

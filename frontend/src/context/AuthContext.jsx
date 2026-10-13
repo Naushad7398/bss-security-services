@@ -4,7 +4,15 @@ import { authApi, getAuthToken, setAuthToken, clearAuthToken } from '../services
 const AuthContext = createContext(null)
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState(() => {
+    if (typeof window === 'undefined') return null
+    try {
+      const stored = localStorage.getItem('bss_user')
+      return stored ? JSON.parse(stored) : null
+    } catch {
+      return null
+    }
+  })
   const [loading, setLoading] = useState(true)
 
   // Fetch or refresh authenticated user profile using /api/auth/me
@@ -12,6 +20,7 @@ export const AuthProvider = ({ children }) => {
     const token = getAuthToken()
     if (!token) {
       setUser(null)
+      try { localStorage.removeItem('bss_user') } catch {}
       setLoading(false)
       return null
     }
@@ -19,11 +28,16 @@ export const AuthProvider = ({ children }) => {
     try {
       const userData = await authApi.getCurrentUser()
       setUser(userData)
+      try { localStorage.setItem('bss_user', JSON.stringify(userData)) } catch {}
       return userData
     } catch (error) {
-      console.warn('Authentication token invalid or expired:', error.message)
-      clearAuthToken()
-      setUser(null)
+      console.warn('Authentication verification note:', error.message)
+      // Only clear credentials if the backend explicitly rejected authentication with 401/403
+      if (error?.status === 401 || error?.status === 403) {
+        clearAuthToken()
+        setUser(null)
+        try { localStorage.removeItem('bss_user') } catch {}
+      }
       return null
     } finally {
       setLoading(false)
@@ -38,11 +52,34 @@ export const AuthProvider = ({ children }) => {
   // Login flow: authenticate, persist JWT, and fetch current user profile
   const login = async (credentials) => {
     const authResponse = await authApi.login(credentials)
-    if (authResponse && authResponse.token) {
-      setAuthToken(authResponse.token)
+    const token =
+      authResponse?.token ||
+      authResponse?.accessToken ||
+      authResponse?.jwt ||
+      authResponse?.data?.token
+    if (token) {
+      setAuthToken(token)
     }
-    const userProfile = await authApi.getCurrentUser()
-    setUser(userProfile)
+
+    let userProfile = null
+    try {
+      userProfile = await authApi.getCurrentUser()
+    } catch (err) {
+      console.warn('Could not fetch /auth/me after login, using login payload:', err.message)
+      if (authResponse && (authResponse.fullName || authResponse.email)) {
+        userProfile = {
+          id: authResponse.id,
+          fullName: authResponse.fullName,
+          email: authResponse.email,
+          role: authResponse.role,
+        }
+      }
+    }
+
+    if (userProfile) {
+      setUser(userProfile)
+      try { localStorage.setItem('bss_user', JSON.stringify(userProfile)) } catch {}
+    }
     return userProfile
   }
 
@@ -56,6 +93,7 @@ export const AuthProvider = ({ children }) => {
   const logout = () => {
     clearAuthToken()
     setUser(null)
+    try { localStorage.removeItem('bss_user') } catch {}
   }
 
   const value = {

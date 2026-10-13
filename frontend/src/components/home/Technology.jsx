@@ -63,13 +63,14 @@ export const Technology = () => {
             <div className="relative rounded-3xl overflow-hidden border border-slate-200 bg-white p-2.5 shadow-xl shadow-slate-200/60">
               <div className="relative rounded-2xl overflow-hidden aspect-[4/3] sm:aspect-square">
                 <ImagePlaceholder
-                  src={siteImages.technology}
+                  src="/d13a5f1d-fc0b-424c-8e4f-87f094ea3997.png"
                   alt="Security Technology Integration at BSS"
                   aspectRatio="aspect-[4/3] sm:aspect-square"
                   label="Surveillance & Coordination"
                   icon={Cpu}
                   className="w-full h-full"
                 />
+                <div className="absolute inset-0 bg-gradient-to-b from-slate-900/20 via-slate-900/45 to-slate-950/80 pointer-events-none" />
               </div>
 
               {/* Status Overlay */}
@@ -91,19 +92,30 @@ export const Technology = () => {
           <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-5">
             {techFeatures.map((feat, idx) => {
               const Icon = feat.icon
+              const techImages = [
+                '/69027753-18b3-4624-982f-7b2cac44099d.png',
+                '/f0de3d3d-49e2-4216-b950-6d57ce87f834.png',
+                '/dee4456e-16e9-407c-8d99-2425e0fd8319.png',
+                '/37cdbc05-2dc1-4af0-bf87-0f985c027cda.png',
+              ]
               return (
                 <div
                   key={idx}
                   className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-amber-500/80 hover:shadow-lg transition-all flex flex-col justify-between"
+                  style={{
+                    backgroundImage: `linear-gradient(to bottom, rgba(15, 23, 42, 0.2), rgba(15, 23, 42, 0.82)), url("${techImages[idx]}")`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                  }}
                 >
                   <div>
                     <div className="w-11 h-11 rounded-xl bg-amber-50 border border-amber-200 text-amber-700 flex items-center justify-center mb-4">
                       <Icon className="w-5 h-5" />
                     </div>
-                    <h3 className="text-base font-bold text-slate-900 mb-2 tracking-tight">
+                    <h3 className="text-base font-bold text-white mb-2 tracking-tight">
                       {feat.title}
                     </h3>
-                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    <p className="text-xs sm:text-sm text-white leading-relaxed">
                       {feat.desc}
                     </p>
                   </div>

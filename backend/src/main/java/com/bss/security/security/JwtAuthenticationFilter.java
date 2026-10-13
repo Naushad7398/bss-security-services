@@ -34,8 +34,17 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
             if (StringUtils.hasText(jwt) && tokenProvider.validateToken(jwt)) {
                 Long userId = tokenProvider.getUserIdFromJWT(jwt);
+                UserDetails userDetails = null;
 
-                UserDetails userDetails = customUserDetailsService.loadUserById(userId);
+                if (userId != null) {
+                    userDetails = customUserDetailsService.loadUserById(userId);
+                } else {
+                    String email = tokenProvider.getEmailFromJWT(jwt);
+                    if (StringUtils.hasText(email)) {
+                        userDetails = customUserDetailsService.loadUserByUsername(email);
+                    }
+                }
+
                 if (userDetails != null && userDetails.isEnabled()) {
                     UsernamePasswordAuthenticationToken authentication =
                             new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
@@ -54,8 +63,17 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     private String getJwtFromRequest(HttpServletRequest request) {
         String bearerToken = request.getHeader("Authorization");
-        if (StringUtils.hasText(bearerToken) && bearerToken.startsWith("Bearer ")) {
-            return bearerToken.substring(7);
+        if (!StringUtils.hasText(bearerToken)) {
+            bearerToken = request.getHeader("authorization");
+        }
+        if (StringUtils.hasText(bearerToken)) {
+            String trimmed = bearerToken.trim();
+            if (trimmed.regionMatches(true, 0, "Bearer ", 0, 7)) {
+                return trimmed.substring(7).trim();
+            }
+            if (trimmed.startsWith("ey")) {
+                return trimmed;
+            }
         }
         return null;
     }

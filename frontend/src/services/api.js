@@ -6,32 +6,97 @@
 // Base URL configurable via Vite environment variables with fallback
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080/api';
 
-// Local storage key for JWT authentication token
-const TOKEN_KEY = 'bss_auth_token';
+// Local storage keys for JWT authentication token across possible storage conventions
+const PRIMARY_TOKEN_KEY = 'bss_auth_token';
+const KNOWN_TOKEN_KEYS = [
+  'bss_auth_token',
+  'token',
+  'jwt',
+  'authToken',
+  'accessToken',
+  'bss_token',
+  'auth_token',
+  'access_token',
+];
+const REQUEST_TIMEOUT_MS = 15000;
 
 /**
- * Retrieve current JWT token from storage (if any).
+ * Clean raw token string: strip whitespace, surrounding quotes, and leading "Bearer "
  */
-export const getAuthToken = () => {
-  return localStorage.getItem(TOKEN_KEY);
+const sanitizeToken = (raw) => {
+  if (!raw || typeof raw !== 'string') return null;
+  let clean = raw.trim();
+  if (clean.startsWith('"') && clean.endsWith('"')) {
+    clean = clean.slice(1, -1).trim();
+  }
+  if (clean.toLowerCase().startsWith('bearer ')) {
+    clean = clean.slice(7).trim();
+  }
+  return clean.length > 0 ? clean : null;
 };
 
 /**
- * Persist or clear JWT token in storage.
+ * Retrieve current JWT token from storage across all standard keys and web storages.
+ */
+export const getAuthToken = () => {
+  if (typeof window === 'undefined') return null;
+  // 1. Search localStorage across all known keys
+  for (const key of KNOWN_TOKEN_KEYS) {
+    try {
+      const val = localStorage.getItem(key);
+      const clean = sanitizeToken(val);
+      if (clean) return clean;
+    } catch {
+      // Ignore storage access errors
+    }
+  }
+  // 2. Search sessionStorage across all known keys
+  for (const key of KNOWN_TOKEN_KEYS) {
+    try {
+      const val = sessionStorage.getItem(key);
+      const clean = sanitizeToken(val);
+      if (clean) return clean;
+    } catch {
+      // Ignore storage access errors
+    }
+  }
+  return null;
+};
+
+/**
+ * Persist JWT token across standard keys in storage for seamless cross-component consistency.
  */
 export const setAuthToken = (token) => {
-  if (token) {
-    localStorage.setItem(TOKEN_KEY, token);
+  if (typeof window === 'undefined') return;
+  const clean = sanitizeToken(token);
+  if (clean) {
+    try {
+      localStorage.setItem(PRIMARY_TOKEN_KEY, clean);
+      localStorage.setItem('token', clean);
+      localStorage.setItem('jwt', clean);
+      sessionStorage.setItem(PRIMARY_TOKEN_KEY, clean);
+      sessionStorage.setItem('token', clean);
+    } catch {
+      // Ignore storage errors
+    }
   } else {
-    localStorage.removeItem(TOKEN_KEY);
+    clearAuthToken();
   }
 };
 
 /**
- * Remove JWT token from storage.
+ * Remove JWT token from all storage locations and keys.
  */
 export const clearAuthToken = () => {
-  localStorage.removeItem(TOKEN_KEY);
+  if (typeof window === 'undefined') return;
+  for (const key of KNOWN_TOKEN_KEYS) {
+    try {
+      localStorage.removeItem(key);
+      sessionStorage.removeItem(key);
+    } catch {
+      // Ignore
+    }
+  }
 };
 
 /**
@@ -51,6 +116,7 @@ async function request(endpoint, options = {}) {
   const token = getAuthToken();
   if (token) {
     headers['Authorization'] = `Bearer ${token}`;
+    delete headers['authorization'];
   }
 
   // Allow browser to manage multipart boundary when sending FormData
@@ -58,12 +124,26 @@ async function request(endpoint, options = {}) {
     delete headers['Content-Type'];
   }
 
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
+
   const config = {
     ...options,
     headers,
+    signal: controller.signal,
   };
 
-  const response = await fetch(url, config);
+  let response;
+  try {
+    response = await fetch(url, config);
+  } catch (error) {
+    if (error.name === 'AbortError') {
+      throw new Error('The request timed out. Please check the backend connection and try again.');
+    }
+    throw error;
+  } finally {
+    clearTimeout(timeoutId);
+  }
 
   if (response.status === 204) {
     return null;

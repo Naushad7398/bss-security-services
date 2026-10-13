@@ -2,6 +2,15 @@
 import { Users, Building, ShieldCheck, Clock, MapPin, Award, Info } from 'lucide-react'
 import Container from '../common/Container'
 
+const metricImages = [
+  '/2eb7e80a-ed1c-4eeb-8340-63fb4387535c.png',
+  '/c3336e9e-bbe0-4255-87bc-ed6f55f25b74.png',
+  '/b0a94bb4-93ff-4a8f-88a4-379dc75f0eda.png',
+  '/dcd2742b-3c51-4680-8e1c-6374eade5387.png',
+  '/08431092-0aed-4081-83d6-6ccab55d4d41.png',
+  '/d1eb4727-a68c-4c0b-bc26-26b971a2f126.png',
+]
+
 export const Facts = () => {
   const factItems = [
     {
@@ -66,21 +75,26 @@ export const Facts = () => {
               <div
                 key={idx}
                 className="p-5 sm:p-6 rounded-2xl bg-white border border-slate-200 hover:border-amber-500/80 shadow-sm hover:shadow-lg transition-all flex flex-col justify-between"
+                style={{
+                  backgroundImage: `linear-gradient(rgba(15, 23, 42, 0.58), rgba(15, 23, 42, 0.78)), url("${metricImages[idx]}")`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                }}
               >
                 <div>
                   <div className="w-10 h-10 rounded-xl bg-amber-50 border border-amber-200 text-amber-700 flex items-center justify-center mb-4">
                     <Icon className="w-5 h-5" />
                   </div>
-                  <div className="text-3xl sm:text-4xl font-extrabold text-amber-600 font-mono tracking-tight mb-2">
+                  <div className="text-3xl sm:text-4xl font-extrabold text-white font-mono tracking-tight mb-2">
                     {item.value}
                   </div>
                 </div>
 
                 <div>
-                  <h4 className="text-xs font-bold text-slate-900 tracking-wide uppercase leading-tight mb-1">
+                  <h4 className="text-xs font-bold text-white tracking-wide uppercase leading-tight mb-1">
                     {item.label}
                   </h4>
-                  <p className="text-[11px] text-slate-500 leading-tight">
+                  <p className="text-[11px] text-white leading-tight">
                     {item.description}
                   </p>
                 </div>

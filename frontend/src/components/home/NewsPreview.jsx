@@ -13,7 +13,7 @@ export const NewsPreview = () => {
       title: 'Operational Standards & Field Readiness',
       summary:
         'Official company updates, standard operating procedures, and service announcements will be published here.',
-      image: siteImages.news[0],
+      image: '/a3c9b5ef-44d8-4491-a543-d6c0fde9301b.png',
       tag: 'Announcement',
     },
     {
@@ -21,7 +21,7 @@ export const NewsPreview = () => {
       title: 'Key Considerations for Industrial Premises Protection',
       summary:
         'Practical security observations and perimeter management considerations for safeguarding commercial assets.',
-      image: siteImages.news[1],
+      image: '/c7cd35d4-f633-4be5-a052-0bcae58a3e6d.png',
       tag: 'Best Practices',
     },
     {
@@ -29,7 +29,7 @@ export const NewsPreview = () => {
       title: 'Integrated Surveillance & On-Site Vigilance Coordination',
       summary:
         'Exploring how electronic surveillance and manned security coordination enhance situational awareness.',
-      image: siteImages.news[2],
+      image: '/68419621-b351-44d0-a3e1-e29080fbded2.png',
       tag: 'Industry Trends',
     },
   ]

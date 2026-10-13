@@ -34,7 +34,7 @@ export const CareersPreview = () => {
             <div className="relative rounded-3xl overflow-hidden border border-slate-200 bg-white p-2.5 shadow-xl shadow-slate-200/60">
               <div className="relative rounded-2xl overflow-hidden aspect-[4/3] sm:aspect-[16/11]">
                 <ImagePlaceholder
-                  src={siteImages.careers}
+                  src="/d48c6077-6412-4455-968d-1f805b07089c.png"
                   alt="Career Opportunities at BSS Suraksha"
                   aspectRatio="aspect-[4/3] sm:aspect-[16/11]"
                   label="Careers at BSS"

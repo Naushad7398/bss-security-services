@@ -69,8 +69,9 @@ The backend accepts the existing configuration names:
 | `BSS_ADMIN_EMAIL` | Initial admin email used by the existing initializer |
 | `BSS_ADMIN_PASSWORD` | Initial admin password used by the existing initializer |
 | `PORT` | Render-provided HTTP port; defaults to `8080` locally |
+| `CORS_ALLOWED_ORIGINS` | Comma-separated frontend origins allowed by Spring Security CORS |
 
-The existing optional variables remain supported, including `BSS_ADMIN_NAME`, `BSS_ADMIN_PHONE`, and `CORS_ALLOWED_ORIGINS`. The admin initializer does not reset an existing user's password; it only creates the configured admin email when that email does not already exist.
+The existing optional variables remain supported, including `BSS_ADMIN_NAME` and `BSS_ADMIN_PHONE`. The admin initializer does not reset an existing user's password; it only creates the configured admin email when that email does not already exist.
 
 ## Render deployment
 
@@ -91,9 +92,12 @@ JWT_SECRET=<strong generated secret>
 JWT_EXPIRATION=86400000
 BSS_ADMIN_EMAIL=<initial admin email>
 BSS_ADMIN_PASSWORD=<initial admin password>
+CORS_ALLOWED_ORIGINS=https://bss-security-services.vercel.app
 ```
 
 Render supplies `PORT` to the service. `server.port=${PORT:8080}` makes the application use it while retaining port `8080` for local development.
+
+The deployed frontend origin must be configured exactly as `CORS_ALLOWED_ORIGINS` in Render. Spring Security already applies this existing configuration to secured endpoints, allows `OPTIONS` preflight requests, and permits public `GET /api/jobs/**` requests. After changing the Render variable, redeploy or restart the backend service.
 
 Do not put secrets in the Dockerfile, Git, or committed environment files. The Render PostgreSQL database is a separate service; PostgreSQL is not included in this image.
 
